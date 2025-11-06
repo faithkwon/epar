@@ -1,11 +1,20 @@
 Package: epar
 Title: Analyzing And Plotting Functions For EPA Data
 Version: 0.0.0.9000
-Authors@R: 
-    person("Faith", "Kwon", , "fkwon@smith.edu", role = c("aut", "cre")),
-    person("Zoe", "Khan", , "zkhan@smith.edu", role = c("aut", "cre"))
+Authors@R: c(
+    person("Faith", "Kwon", email = "fkwon@smith.edu", role = c("aut", "cre")),
+    person("Zoe", "Khan", email = "zkhan@smith.edu", role = "aut")
+  )
 Description: Tool for analyzing and plotting EPA Toxic Release Inventory data; exploratory data analysis, mapping, statistical tools.
 License: GPL-3
+Depends:
+    R (>= 4.1.0)
+Imports:
+  ggplot2,
+  dplyr,
+  janitor,
+  forcats,
+  rlang
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3
