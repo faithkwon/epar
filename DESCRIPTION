@@ -1,12 +1,11 @@
 Package: epar
-Title: What the Package Does (One Line, Title Case)
+Title: Analyzing And Plotting Functions For EPA Data
 Version: 0.0.0.9000
 Authors@R: 
-    person("Faith", "Kwon", , "first.last@example.com", role = c("aut", "cre")),
-    person("Zoe", "Khan", , "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+    person("Faith", "Kwon", , "fkwon@smith.edu", role = c("aut", "cre")),
+    person("Zoe", "Khan", , "zkhan@smith.edu", role = c("aut", "cre"))
+Description: Tool for analyzing and plotting EPA Toxic Release Inventory data; exploratory data analysis, mapping, statistical tools.
+License: GPL-3
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3
