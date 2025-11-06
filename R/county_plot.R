@@ -4,10 +4,11 @@
 #' @param data ETA TRI dataset for a state and year
 #' @param county County of interest
 #' @return a ggplot object
-#' @importFrom ggplot2 ggplot aes geom_col labs theme_bw theme
+#' @importFrom ggplot2 ggplot aes geom_col labs theme_bw theme element_text
 #' @importFrom janitor clean_names
-#' @importFrom dplyr filter group_by summarize
+#' @importFrom dplyr filter group_by summarize n
 #' @importFrom forcats fct_reorder
+#' @importFrom rlang .data
 #' @export
 #' @examples
 #' \dontrun{
@@ -18,10 +19,10 @@
 county_plot <- function(data, county) {
   data <- clean_names(data)
   g <- filtered <- data |>
-    filter(x7_county == county) |>
-    group_by(x23_industry_sector) |>
+    filter(.data$x7_county == county) |>
+    group_by(.data$x23_industry_sector) |>
     summarize(number = n()) |>
-    ggplot(aes(x = fct_reorder(x23_industry_sector, number, .desc = TRUE), y = number)) +
+    ggplot(aes(x = fct_reorder(.data$x23_industry_sector, .data$number, .desc = TRUE), y = .data$number)) +
     geom_col() +
     labs(x = "Industry sector", y = "Number of facility chemical releases",
          title = paste0("Industry Releases in ", county, ", ", data$x8_st[[1]])) +
