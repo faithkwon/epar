@@ -7,7 +7,7 @@
 \format{
 A data frame with 820 rows and 122 variables:
 \describe{
-\item{test} test
+\item{test}{test}
 }
 }
 \usage{
