@@ -5,9 +5,30 @@
 \alias{ma_2024}
 \title{ma_2024: EPA TRI data from Massachusetts}
 \format{
-A data frame with 820 rows and 122 variables:
+A data frame with 820 rows and 22 variables:
 \describe{
-\item{test}{test}
+\item{x1_year}{test}
+\item{x3_frs_id}{}
+\item{}{}
+\item{}{}
+\item{}{}
+\item{}{}
+\item{}{}
+\item{}{}
+\item{}{}
+\item{}{}
+\item{}{}
+\item{}{}
+\item{}{}
+\item{}{}
+\item{}{}
+\item{}{}
+\item{}{}
+\item{}{}
+\item{}{}
+\item{}{}
+\item{}{}
+
 }
 }
 \usage{
