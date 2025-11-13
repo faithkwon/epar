@@ -15,11 +15,11 @@
 clean_epa <- function(data) {
   cleaned <- clean_names(data)
   cleaned <- cleaned |>
-    select(x1_year, x3_frs_id, x4_facility_name, x6_city, x7_county, x8_st,
-           x9_zip, x12_latitude, x13_longitude, x15_parent_co_name, x21_federal_facility,
-           x23_industry_sector, x37_chemical, x38_elemental_metal_included,
-           x42_clean_air_act_chemical, x43_classification, x44_metal,
-           x46_carcinogen, x47_pbt, x48_pfas, x50_unit_of_measure, x107_total_releases) |>
+    select(.data$x1_year, .data$x3_frs_id, .data$x4_facility_name, .data$x6_city, .data$x7_county, .data$x8_st,
+           .data$x9_zip, .data$x12_latitude, .data$x13_longitude, .data$x15_parent_co_name, .data$x21_federal_facility,
+           .data$x23_industry_sector, .data$x37_chemical, .data$x38_elemental_metal_included,
+           .data$x42_clean_air_act_chemical, .data$x43_classification, .data$x44_metal,
+           .data$x46_carcinogen, .data$x47_pbt, .data$x48_pfas, .data$x50_unit_of_measure, .data$x107_total_releases) |>
     rename_with(~ substring(., 4), .cols = 1:7) |>
     rename_with(~ substring(., 5), .cols = 8:22)
   return(cleaned)

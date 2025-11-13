@@ -25,7 +25,7 @@ county_plot <- function(data, county) {
     ggplot(aes(x = fct_reorder(.data$x23_industry_sector, .data$number, .desc = TRUE), y = .data$number)) +
     geom_col() +
     labs(x = "Industry sector", y = "Number of facility chemical releases",
-         title = paste0("Industry Releases in ", ceounty, ", ", data$x8_st[[1]])) +
+         title = paste0("Industry Releases in ", county, ", ", data$x8_st[[1]])) +
     theme_bw() +
     theme(axis.text.x = element_text(angle = 45, hjust = 1))
   return(g)
