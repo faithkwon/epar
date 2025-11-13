@@ -15,12 +15,12 @@
 chemstats <- function(data, area = c("county", "city", "zip")) {
 
   grouping_var <- switch(area,
-                         "county" = "x7_county",
-                         "city" = "x6_city",
-                         "zip" = "x9_zip")
+                         "county" = "county",
+                         "city" = "city",
+                         "zip" = "zip")
 
   temp <- data |>
-    group_by(.data[[grouping_var]], x23_industry_sector) |>
+    group_by(.data[[grouping_var]], industry_sector) |>
     summarize(sum = n()) |>
     arrange(desc(sum)) |>
     slice(1) |>
@@ -29,12 +29,11 @@ chemstats <- function(data, area = c("county", "city", "zip")) {
   result <- data |>
     group_by(.data[[grouping_var]]) |>
     summarize(num_releases = n(),
-              percent_carcinogen = (sum(x46_carcinogen == "YES") / n())*100,
-              percent_hazard = (sum(x42_clean_air_act_chemical == "NO") / n())*100) |>
+              percent_carcinogen = (sum(carcinogen == "YES") / n())*100,
+              percent_hazard = (sum(clean_air_act_chemical == "NO") / n())*100) |>
     left_join(temp,
               by = grouping_var) |>
-    rename(top_industry = x23_industry_sector) |>
-    rename_with(~ substring(., 4), .cols = 1) # this deletes the first three letters of the column name for the grouping variable (eg. x7_county --> county)
+    rename(top_industry = industry_sector)
 
   return(result)
 }
