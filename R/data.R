@@ -4,28 +4,60 @@
 #'
 #' @format A data frame with 820 rows and 22 variables:
 #' \describe{
-#'   \item{x1_year}{test}
-#'   \item{x3_frs_id}{}
-#'   \item{}{}
-#'   \item{}{}
-#'   \item{}{}
-#'   \item{}{}
-#'   \item{}{}
-#'   \item{}{}
-#'   \item{}{}
-#'   \item{}{}
-#'   \item{}{}
-#'   \item{}{}
-#'   \item{}{}
-#'   \item{}{}
-#'   \item{}{}
-#'   \item{}{}
-#'   \item{}{}
-#'   \item{}{}
-#'   \item{}{}
-#'   \item{}{}
-#'   \item{}{}
-#'
+#'   \item{year}{Calendar year in which the reported activities occurred.}
+#'   \item{frs_id}{Unique identification number assigned by EPA’s Facility Registry Service (FRS) to the TRI facility.}
+#'   \item{facility_name}{Name of the reporting facility.}
+#'   \item{city}{City in which the reporting facility is located.}
+#'   \item{county}{County in which the reporting facility is located.}
+#'   \item{st}{Two-letter state code of the reporting facility.}
+#'   \item{zip}{ZIP code of the reporting facility.}
+#'   \item{latitude}{Latitude value}
+#'   \item{longitude}{Longitude value}
+#'   \item{parent_co_name}{Name of the corporation or other business entity that controls the reporting facility.}
+#'   \item{federal_facility}{Flag indicating whether the facility is federally owned and operated. Yes = federal; no = non-federal}
+#'   \item{industry_sector}{The industry or sector (e.g., Coal Mining, Metal Mining, Electrical Utilities, etc.) a facility belongs to.}
+#'   \item{chemical}{Name of the chemical as listed on the TRI chemical list, or generic name, if the chemical is claimed as a trade secret}
+#'   \item{elemental_metal_included}{Flag indicating whether the facility submitted a combined reporting form for a metal compound and the corresponding elemental metal. }
+#'   \item{clean_air_act_chemical}{Flag indicating whether the chemical is listed as a hazardous air pollutant under the Clean Air Act (CAA). Yes = CAAC; No = Non-CAAC}
+#'   \item{classification}{Indicates the classification of the chemical. Chemicals can be classified as either a dioxin or dioxin-like compound, a Persistent, Bioaccumulative and Toxic chemical, or a general EPCRA Section 313 chemical}
+#'   \item{metal}{Flag indicating whether the chemical is a metal with TRI reporting restrictions. Yes = Metal with reporting restrictions No = TRI chemical without reporting restrictions}
+#'   \item{carcinogen}{Flag indicating whether the chemical is classified as a carcinogen by the Occupational Safety and Health Administration (OSHA). Yes = CARC No = Non-CARC}
+#'   \item{pbt}{Flag indicating a chemical as a persistent, bioaccumulative, toxic (PBT) chemical. Values: Yes = Chemical is a PBT; No = Chemical is not a PBT}
+#'   \item{pfas}{Flag identifying a chemical as a per- and polyfluoroalkyl substance (PFAS). PFAS chemicals were added to TRI in reporting year 2020. VALUES: YES = Chemical is a PFAS; NO = Chemical NOT a PFAS}
+#'   \item{unit_of_measure}{Indicates the unit of measure used to quantify the chemical. Dioxin and dioxin-like compounds are reported in grams, while all other TRI chemicals are reported in pounds.}
+#'   \item{_total_releases}{The total on- and off-site releases from sections 5 and 6 of the Form R}
 #' }
 #'
 "ma_2024"
+
+#' tx_2024: EPA TRI data from Texas
+#'
+#' Contains chemical release data from Texas in 2024. Can be used as an example data set for any package functions.
+#'
+#' @format A data frame with 9522 rows and 22 variables:
+#' \describe{
+#'   \item{year}{Calendar year in which the reported activities occurred.}
+#'   \item{frs_id}{Unique identification number assigned by EPA’s Facility Registry Service (FRS) to the TRI facility.}
+#'   \item{facility_name}{Name of the reporting facility.}
+#'   \item{city}{City in which the reporting facility is located.}
+#'   \item{county}{County in which the reporting facility is located.}
+#'   \item{st}{Two-letter state code of the reporting facility.}
+#'   \item{zip}{ZIP code of the reporting facility.}
+#'   \item{latitude}{Latitude value}
+#'   \item{longitude}{Longitude value}
+#'   \item{parent_co_name}{Name of the corporation or other business entity that controls the reporting facility.}
+#'   \item{federal_facility}{Flag indicating whether the facility is federally owned and operated. Yes = federal; no = non-federal}
+#'   \item{industry_sector}{The industry or sector (e.g., Coal Mining, Metal Mining, Electrical Utilities, etc.) a facility belongs to.}
+#'   \item{chemical}{Name of the chemical as listed on the TRI chemical list, or generic name, if the chemical is claimed as a trade secret}
+#'   \item{elemental_metal_included}{Flag indicating whether the facility submitted a combined reporting form for a metal compound and the corresponding elemental metal. }
+#'   \item{clean_air_act_chemical}{Flag indicating whether the chemical is listed as a hazardous air pollutant under the Clean Air Act (CAA). Yes = CAAC; No = Non-CAAC}
+#'   \item{classification}{Indicates the classification of the chemical. Chemicals can be classified as either a dioxin or dioxin-like compound, a Persistent, Bioaccumulative and Toxic chemical, or a general EPCRA Section 313 chemical}
+#'   \item{metal}{Flag indicating whether the chemical is a metal with TRI reporting restrictions. Yes = Metal with reporting restrictions No = TRI chemical without reporting restrictions}
+#'   \item{carcinogen}{Flag indicating whether the chemical is classified as a carcinogen by the Occupational Safety and Health Administration (OSHA). Yes = CARC No = Non-CARC}
+#'   \item{pbt}{Flag indicating a chemical as a persistent, bioaccumulative, toxic (PBT) chemical. Values: Yes = Chemical is a PBT; No = Chemical is not a PBT}
+#'   \item{pfas}{Flag identifying a chemical as a per- and polyfluoroalkyl substance (PFAS). PFAS chemicals were added to TRI in reporting year 2020. VALUES: YES = Chemical is a PFAS; NO = Chemical NOT a PFAS}
+#'   \item{unit_of_measure}{Indicates the unit of measure used to quantify the chemical. Dioxin and dioxin-like compounds are reported in grams, while all other TRI chemicals are reported in pounds.}
+#'   \item{_total_releases}{The total on- and off-site releases from sections 5 and 6 of the Form R}
+#' }
+#'
+"tx_2024"
