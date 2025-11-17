@@ -4,10 +4,10 @@
 \alias{choro}
 \title{Choropleth mapping function}
 \usage{
-choro(data, map_labels = FALSE)
+choro(epa_data, map_labels = FALSE)
 }
 \arguments{
-\item{data}{ETA TRI dataset for a state and year}
+\item{epa_data}{ETA TRI dataset for a state and year}
 
 \item{map_labels}{Add county labels to the map (TRUE, FALSE)}
 }
