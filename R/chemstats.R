@@ -4,7 +4,7 @@
 #' @param data ETA TRI dataset for a state and year
 #' @param area User choice of county, city or zip
 #' @return summary statistics
-#' @importFrom dplyr filter group_by summarize n arrange slice select left_join rename
+#' @importFrom dplyr filter group_by summarize n arrange slice select left_join rename desc
 #' @export
 #' @examples
 #' \dontrun{
@@ -20,20 +20,20 @@ chemstats <- function(data, area = c("county", "city", "zip")) {
                          "zip" = "zip")
 
   temp <- data |>
-    group_by(.data[[grouping_var]], industry_sector) |>
+    group_by(.data[[grouping_var]], .data$industry_sector) |>
     summarize(sum = n()) |>
-    arrange(desc(sum)) |>
+    arrange(desc(.data$sum)) |>
     slice(1) |>
     select(!sum)
 
   result <- data |>
     group_by(.data[[grouping_var]]) |>
     summarize(num_releases = n(),
-              percent_carcinogen = (sum(carcinogen == "YES") / n())*100,
-              percent_hazard = (sum(clean_air_act_chemical == "NO") / n())*100) |>
+              percent_carcinogen = (sum(.data$carcinogen == "YES") / n())*100,
+              percent_hazard = (sum(.data$clean_air_act_chemical == "NO") / n())*100) |>
     left_join(temp,
               by = grouping_var) |>
-    rename(top_industry = industry_sector)
+    rename(top_industry = .data$industry_sector)
 
   return(result)
 }
