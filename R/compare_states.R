@@ -13,31 +13,17 @@
 #' }
 
 compare_states <- function(data, data2) {
-  state1 <- toupper(data[["st"]][1])
-  state2 <- toupper(data2[["st"]][1])
+  state1 <- data[["st"]][1]
+  state2 <- data2[["st"]][1]
 
   num_releases <- nrow(data)
   num_releases2 <- nrow(data2)
 
-  perc_hazard <- data |>
-    summarize((sum(.data$clean_air_act_chemical == "NO") / n())*100) |>
-    pull() |>
-    round(digits = 2)
+  perc_hazard <- percentage(data, "clean_air_act_chemical", "NO")
+  perc_hazard2 <- percentage(data2, "clean_air_act_chemical", "NO")
 
-  perc_hazard2 <- data2 |>
-    summarize((sum(.data$clean_air_act_chemical == "NO") / n())*100) |>
-    pull() |>
-    round(digits = 2)
-
-  perc_carcin <- data |>
-    summarize((sum(.data$carcinogen == "YES") / n())*100) |>
-    pull() |>
-    round(digits = 2)
-
-  perc_carcin2 <- data2 |>
-    summarize((sum(.data$carcinogen == "YES") / n())*100) |>
-    pull() |>
-    round(digits = 2)
+  perc_carcin <- percentage(data, "carcinogen", "YES")
+  perc_carcin2 <- percentage(data2, "carcinogen", "YES")
 
   cat("Your two states are: ", state1, " and ", state2, ".", "\n")
   cat(state1, " has ", num_releases, " chemical releases.", "\n", state2, " has ", num_releases2, "chemical releases.", "\n")
