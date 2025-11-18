@@ -35,6 +35,11 @@ compare_states(ma_2024, tx_2024)
 #>  30.27 % of  TX 's chemical releases are carcinogens.
 ```
 
+    #> Warning in st_point_on_surface.sfc(sf::st_zm(x)): st_point_on_surface may not
+    #> give correct results for longitude/latitude data
+
+<img src="man/figures/README-choropleth-1.png" width="100%" />
+
 Note: You’ll still need to render `README.Rmd` regularly, to keep
 `README.md` up-to-date. `devtools::build_readme()` is handy for this. In
 that case, don’t forget to commit and push the resulting figure files,

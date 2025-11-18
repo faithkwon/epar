@@ -5,10 +5,10 @@
 #' @param map_labels Add county labels to the map (TRUE, FALSE)
 #' @return a ggplot object
 #' @importFrom ggplot2 ggplot aes geom_sf scale_fill_viridis_c labs theme_void geom_sf_label
-#' @importFrom dplyr filter mutate group_by summarize rename left_join
+#' @importFrom dplyr mutate group_by summarize rename left_join
 #' @importFrom rlang .data
 #' @importFrom stringr str_to_lower
-#' @importFrom tigris counties
+#' @importFrom sf st_as_sf
 #' @export
 #' @examples
 #' \dontrun{
@@ -17,30 +17,26 @@
 #' }
 choro <- function(epa_data, map_labels = FALSE) {
   epa_data <- epa_data |>
+    rename("STUSPS" = .data$st) |>
     mutate(county = str_to_lower(.data$county))|>
-    rename("total_releases" = .data$`_total_releases`) |>
-    group_by(.data$st, .data$county) |>
-    summarize(number_releases = n())
+    group_by(.data$STUSPS, .data$county) |>
+    summarize(number_releases = n(), .groups = "drop")
 
-  us_counties <- tigris::counties(cb = TRUE)
-  us_counties <- us_counties |>
-    rename("county" = "NAME") |>
-    mutate(county = str_to_lower(.data$county)) |>
-    filter(.data$STUSPS == epa_data$st[1]) |>
-    rename("st" = .data$STUSPS)
+  state <- epa_data$STUSPS[1]
+  us_counties <- epar::us_counties[epar::us_counties$STUSPS == state, ]
 
   merged <- us_counties |>
-    left_join(epa_data, by = c("county", "st"))
-
+    left_join(epa_data, by = c("county", "STUSPS"))
+  merged <- st_as_sf(merged)
   map <- ggplot() +
     geom_sf(data = merged, aes(fill = .data$number_releases)) +
     scale_fill_viridis_c() +
-    labs(title = paste0("Chemical releases by county in ", epa_data$st[1]), fill = "# releases", x = "", y = "")+
+    labs(title = paste0("Chemical releases by county in ", state), fill = "# releases", x = "", y = "")+
     theme_void()
 
   if (map_labels == TRUE) {
     map <- map +
-      geom_sf_label(data = merged, aes(label = merged$county), fill = "white", color = "black", size = 2.5)
+      geom_sf_label(data = merged, aes(label = .data$county), fill = "white", color = "black", size = 2.5)
   }
   return(map)
 }

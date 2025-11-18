@@ -21,6 +21,8 @@ clean_epa <- function(data) {
            .data$x42_clean_air_act_chemical, .data$x43_classification, .data$x44_metal,
            .data$x46_carcinogen, .data$x47_pbt, .data$x48_pfas, .data$x50_unit_of_measure, .data$x107_total_releases) |>
     rename_with(~ substring(., 4), .cols = 1:7) |>
-    rename_with(~ substring(., 5), .cols = 8:22)
+    rename_with(~ substring(., 5), .cols = 8:21) |>
+    rename_with(~ substring(., 6), .cols = 22)
   return(cleaned)
 }
+
