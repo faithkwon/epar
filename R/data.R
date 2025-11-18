@@ -61,3 +61,19 @@
 #' }
 #'
 "tx_2024"
+
+#' us_counties: shapefile for the United States, by state counties
+#'
+#' Contains shapefile information (spatial geometry) needed for mapping functions within the package, such as mapchems() and choro().
+#'
+#' @format A data frame with 3235 rows and 6 variables:
+#' \describe{
+#'   \item{STATEFP}{Unique state code}
+#'   \item{COUNTYFP}{Unique county code}
+#'   \item{county}{Name of county, lowercase}
+#'   \item{STUSPS}{State abbreviation}
+#'   \item{STATE_NAME}{State name}
+#'   \item{geometry}{Spatial geometry containing latitude and longitude coordinates}
+#' }
+#'
+"us_counties"
