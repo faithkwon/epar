@@ -25,7 +25,7 @@
 #'   \item{pbt}{Flag indicating a chemical as a persistent, bioaccumulative, toxic (PBT) chemical. Values: Yes = Chemical is a PBT; No = Chemical is not a PBT}
 #'   \item{pfas}{Flag identifying a chemical as a per- and polyfluoroalkyl substance (PFAS). PFAS chemicals were added to TRI in reporting year 2020. VALUES: YES = Chemical is a PFAS; NO = Chemical NOT a PFAS}
 #'   \item{unit_of_measure}{Indicates the unit of measure used to quantify the chemical. Dioxin and dioxin-like compounds are reported in grams, while all other TRI chemicals are reported in pounds.}
-#'   \item{_total_releases}{The total on- and off-site releases from sections 5 and 6 of the Form R}
+#'   \item{total_releases}{The total on- and off-site releases from sections 5 and 6 of the Form R}
 #' }
 #'
 "ma_2024"
@@ -57,7 +57,7 @@
 #'   \item{pbt}{Flag indicating a chemical as a persistent, bioaccumulative, toxic (PBT) chemical. Values: Yes = Chemical is a PBT; No = Chemical is not a PBT}
 #'   \item{pfas}{Flag identifying a chemical as a per- and polyfluoroalkyl substance (PFAS). PFAS chemicals were added to TRI in reporting year 2020. VALUES: YES = Chemical is a PFAS; NO = Chemical NOT a PFAS}
 #'   \item{unit_of_measure}{Indicates the unit of measure used to quantify the chemical. Dioxin and dioxin-like compounds are reported in grams, while all other TRI chemicals are reported in pounds.}
-#'   \item{_total_releases}{The total on- and off-site releases from sections 5 and 6 of the Form R}
+#'   \item{total_releases}{The total on- and off-site releases from sections 5 and 6 of the Form R}
 #' }
 #'
 "tx_2024"
