@@ -1,0 +1,77 @@
+---
+title: "my-vignette"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{my-vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(epar)
+```
+
+epar is a package that works with datasets downloaded from the EPA's Toxic Release Inventory data files, primarily from Massachusetts and Texas. 
+
+```{r}
+data(ma_2024)
+data(tx_2024)
+```
+
+`ma_2024` and `tx_2024` contain the 2024 Toxic Release Inventory information from Massachusetts and Texas,  respectively. Each instance in the data is a toxic release report and breaks down information of each release. For example, the specific facility and its city/county, the industry sector, classifications of the chemical (i.e. whether it's a carcinogen, a metal, a "clean" chemical according to the Clean Air Act), and more (refer to the Data Documentation for a more in-depth breakdown of each variable). 
+
+epar also has a couple functions to help the user better understand the data. 
+
+`chemstats()` is a function for summarizing toxic release information by county, city, or zip code, depending on what the user specifies. 
+
+This is what it'd look like to group by county for Massachusetts:
+
+```{r}
+chemstats(ma_2024, "county")
+```
+
+`choro()` maps the number of chemical releases by county. You can choose to include or exclude county labels with a logical argument. 
+
+This is what it'd look like to map the chemical releases of Texas, without including the county labels:
+
+```{r}
+choro(tx_2024, FALSE)
+```
+
+`compare_states()` compares information about the classifications of chemical releases between two given states.
+
+Comparing Massachusetts and Texas:
+
+```{r}
+compare_states(ma_2024, tx_2024)
+```
+
+`county_plot()` returns a bar plot that visualizes the the number of releases by industry sector in a given county.
+
+Here's how it'd look to get the # of releases by industry sector in Essex County, Massachusetts:
+
+```{r}
+county_plot(ma_2024, "ESSEX")
+```
+
+`mapchems()` returns a geographic scatter plot that shows the number of releases by facility, colored by one of these options: "classification" (PBT [persistent, bioaccumulative, and toxic] vs TRI [general chemical]), "carcinogen" (whether or not it's a carcinogen), "federal_facility" (whether the facility is federally owned or not), "pbt" (whether ot not the chemical is classified as a PBT or not), or "pfas" (per- and polyfluoroalkyl substance). 
+
+Mapping Massachusetts releases, colored by whether or not the chemical is a carcinogen:
+
+```{r}
+mapchems(ma_2024, "carcinogen")
+```
+
+Mapping Texas releases, colored by the chemical's classification:
+
+```{r}
+mapchems(tx_2024, "classification")
+```
+
