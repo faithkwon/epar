@@ -1,0 +1,12 @@
+Faith and Zoe, excellent job on the package so far! The package is running on my
+end just fine.
+
+I've added some feedback and things to consider as you refine the package even further:
+
+- Add a note in the README regarding the size of the package. This will let users
+know that the package is relatively big.
+- For the raw data, rename it to data-raw (similar to what Hadley uses in their own packages). You can see Chapter 7 of R Packages, particularly the data-raw section for more info.
+- The choro.R function looks great -- amazing functionality so far. Just some tweaks to be made here.
+- Same goes with comparing states. Some small text errors to be fixed here.
+
+Overall, it looks like you've made decent progress with the desired goal of your project. For the next checkpoint, try to focus on the functionality of the other functions, as well as refining the functions you currently have. The package looks promising, and even the examples you've commented out do work.
