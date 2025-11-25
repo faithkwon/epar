@@ -20,10 +20,14 @@ tibble
 A function for exploring properties of different industry sectors in a given state.
 }
 \details{
-The user can provide EPA data and a binary grouping variable of interest. The function will return the variable proportion for each industry sector, while also specifying the number of releases.
+The user can provide EPA data and a binary grouping variable of interest. The function will return the variable proportion for each industry sector, while also specifying the number of releases. Note: the function does not differentiate sectors with higher overall outputs (eg. the top row might have 100\% carcinogenic releases, but only 1 release).
 }
 \examples{
 \dontrun{
+# Looking at the proportion of chemical releases that are pbts by industry
 indust(ma_2024, "pbt")
+
+# Finding the top 5 industry sectors with the highest proportions of carcinogenic chemical releases
+indust(ma_2024, "carcinogen", 5)
 }
 }

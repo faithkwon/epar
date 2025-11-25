@@ -1,6 +1,6 @@
 #' Industry information
 #' @description A function for exploring properties of different industry sectors in a given state.
-#' @details The user can provide EPA data and a binary grouping variable of interest. The function will return the variable proportion for each industry sector, while also specifying the number of releases.
+#' @details The user can provide EPA data and a binary grouping variable of interest. The function will return the variable proportion for each industry sector, while also specifying the number of releases. Note: the function does not differentiate sectors with higher overall outputs (eg. the top row might have 100% carcinogenic releases, but only 1 release).
 #' @param data ETA TRI dataset for a state and year
 #' @param grouping_var Binary variable to group by ("carcinogen", "pfas", "pbt", "federal_facility", "clean_air_act_chemical", "elemental_element_included", "metal")
 #' @param return_all Determines whether the function returns a full or truncated table ("TRUE" for full, or a number for the top X rows)
@@ -10,7 +10,11 @@
 #' @export
 #' @examples
 #' \dontrun{
+#' # Looking at the proportion of chemical releases that are pbts by industry
 #' indust(ma_2024, "pbt")
+#'
+#' # Finding the top 5 industry sectors with the highest proportions of carcinogenic chemical releases
+#' indust(ma_2024, "carcinogen", 5)
 #' }
 
 indust <- function(data, grouping_var = "carcinogen", return_all = TRUE) {
