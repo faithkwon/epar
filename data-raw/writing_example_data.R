@@ -1,6 +1,6 @@
 # Read in the EPA TRI example data from the raw-data folder
-ma_2024 <- read.csv("raw_data/2024_ma.csv")
-tx_2024 <- read.csv("raw_data/2024_tx.csv")
+ma_2024 <- read.csv("data-raw/2024_ma.csv")
+tx_2024 <- read.csv("data-raw/2024_tx.csv")
 
 # Cleaning the data
 ma_2024 <- clean_epa(ma_2024)
