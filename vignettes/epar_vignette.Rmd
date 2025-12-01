@@ -1,0 +1,93 @@
+---
+title: "The Ins and Outs of epar"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{my-vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+Below are the packages needed for this document.
+```{r setup, message = FALSE}
+library(epar)
+library(dplyr)
+```
+
+The epar is package works with datasets downloaded from the EPA's Toxic Release Inventory data files, and contains example data from Massachusetts and Texas. 
+
+```{r}
+data(ma_2024)
+data(tx_2024)
+```
+
+`ma_2024` and `tx_2024` contain the 2024 Toxic Release Inventory information from Massachusetts and Texas,  respectively. Each instance in the data is a toxic release report and breaks down information of each release. For example, the specific facility and its city/county, the industry sector, classifications of the chemical (i.e. whether it's a carcinogen, a metal, a "clean" chemical according to the Clean Air Act), and more (refer to the Data Documentation for a more in-depth breakdown of each variable). 
+
+In addition to prepared data, the epar package has a whole host of functions to help the user better understand the data. The following document will walk through each of these functions.
+
+`chemstats()` is a function for summarizing toxic release information by county, city, or zip code, depending on what the user specifies. We can use Massachusetts as an example:
+
+```{r}
+chemstats(ma_2024, "county")
+```
+
+
+`compare_states()` compares information about the classifications of chemical releases between two given states. Here is an example comparing Massachusetts and Texas:
+
+```{r}
+compare_states(ma_2024, tx_2024)
+```
+
+`indust()` breaks down industry sectors by the proportion of a given binary variable. For instance, here is an example that returns the highest proportion of carcinogenic releases in Texas:
+
+```{r}
+indust(tx_2024, "carcinogen")
+```
+
+You may also choose to just obtain the top number of industries with `indust()`, as shown below with the top 3 industries in Texas for the highest proportion of carcinogenic releases:
+```{r}
+indust(tx_2024, "carcinogen", 3)
+```
+
+`county_plot()` returns a bar plot that visualizes the the number of releases by industry sector in a given county. Here is an example of the number of releases by industry sector in Essex County, Massachusetts:
+
+```{r}
+county_plot(ma_2024, "ESSEX")
+```
+
+`mapchems()` returns a geographic scatter plot that shows the number of releases by facility, colored by one of these options: "classification" (PBT [persistent, bioaccumulative, and toxic] vs TRI [general chemical]), "carcinogen" (whether or not it's a carcinogen), "federal_facility" (whether the facility is federally owned or not), "pbt" (whether ot not the chemical is classified as a PBT or not), or "pfas" (per- and polyfluoroalkyl substance). Below we map Massachusetts releases, colored by whether or not the chemical is a carcinogen:
+
+```{r}
+mapchems(ma_2024, "carcinogen")
+```
+
+For another example, below we map Texas releases, colored by the chemical's classification:
+
+```{r}
+mapchems(tx_2024, "classification")
+```
+
+`choro()` maps the number of chemical releases by county. You can choose to include or exclude county labels with a logical argument. For example, here is a map of the chemical releases in Massachusetts last year, including county labels:
+
+```{r}
+choro(ma_2024, map_labels = TRUE)
+```
+
+There are also a number of functions for if a user has downloaded their own EPA TRI data set and wants to be able to produce the same visualizations as those above. The `clean_epa()` function goes through the data wrangling aspect of this. The `ma_2024` and `tx_2024` data sets included in the package have already been cleaned.
+
+Additionally, the user may find helpful the `unit_change()` function, which helps organize the units of the `total_releases` variable in the TRI data. This is especially helpful when considering that certain chemicals, such as dioxins, are not measured in pounds like the rest of the chemicals!
+```{r}
+unit_change(tx_2024, "lbs") |>
+  select(unit_of_measure, total_releases) |> head(1)
+```
+Finally, we also have a more generic `percentage()` function, which allows the user to see the percentage of a categorical level in any given variable. For instance, below we test to see the percentage of chemical releases in Massachusetts are not metals:
+```{r}
+percentage(ma_2024, "metal", "NO")
+```
+
