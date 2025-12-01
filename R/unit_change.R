@@ -15,53 +15,58 @@
 unit_change <- function(epa_data, new_unit) {
   # All lowercase
   epa_data <- epa_data |>
-    mutate(unit_of_measure = tolower(.data$unit_of_measure))
+    mutate(unit_of_measure = tolower(.data$unit_of_measure)) |>
+    mutate(unit_of_measure = case_when(
+      unit_of_measure == "pounds" ~ "lbs",
+      unit_of_measure == "grams" ~ "g",
+      TRUE ~ unit_of_measure
+    ))
 
   # Define unit to change to
   new_unit <- match.arg(new_unit, choices = c("lbs", "kg", "g"))
 
   # Convert dioxins g to lbs.
-  if ("grams" %in% unique(epa_data$unit_of_measure)) {
+  if ("g" %in% unique(epa_data$unit_of_measure)) {
     epa_data <- epa_data |>
-      mutate(total_release = ifelse(
-        .data$unit_of_measure == "grams",
+      mutate(total_releases = ifelse(
+        .data$unit_of_measure == "g",
         .data[["total_releases"]] * 0.00220462,
         .data[["total_releases"]]
       )) |>
-      mutate(unit_of_measure = "pounds")
+      mutate(unit_of_measure = "lbs")
   }
 
-  if (new_unit %in% c("pounds")) {
-    if("pounds" %in% unique(epa_data$unit_of_measure)) {
+  if (new_unit %in% c("lbs")) {
+    if("lbs" %in% unique(epa_data$unit_of_measure)) {
       message("Already in pounds.")
     } else if ("kg" == unique(epa_data$unit_of_measure)) {
       epa_data <- epa_data |>
-        mutate(total_release = .data$total_release*2.20462, unit_of_measure = "lbs")
+        mutate(total_releases = .data$total_releases*2.20462, unit_of_measure = "lbs")
     } else if ("g" == unique(epa_data$unit_of_measure)) {
       epa_data <- epa_data |>
-        mutate(total_release = .data$total_release*0.00220462, unit_of_measure = "lbs")
+        mutate(total_releases = .data$total_releases*0.00220462, unit_of_measure = "lbs")
     }
   }
   if (new_unit == "kg") {
     if("kg" %in% unique(epa_data$unit_of_measure)) {
       message("Already in kilograms.")
-    } else if ("pounds" == unique(epa_data$unit_of_measure)) {
+    } else if ("lbs" == unique(epa_data$unit_of_measure)) {
       epa_data <- epa_data |>
-        mutate(total_release = .data$total_release*0.453592, unit_of_measure = "kg")
+        mutate(total_releases = .data$total_releases*0.453592, unit_of_measure = "kg")
     } else if ("g" == unique(epa_data$unit_of_measure)) {
       epa_data <- epa_data |>
-        mutate(total_release = .data$total_release*0.001, unit_of_measure = "kg")
+        mutate(total_releases = .data$total_releases*0.001, unit_of_measure = "kg")
     }
   }
   if (new_unit == "g") {
     if("g" %in% unique(epa_data$unit_of_measure)) {
       message("Already in grams.")
-    } else if ("pounds" == unique(epa_data$unit_of_measure)) {
+    } else if ("lbs" == unique(epa_data$unit_of_measure)) {
       epa_data <- epa_data |>
-        mutate(total_release = .data$total_release*453.592, unit_of_measure = "g")
+        mutate(total_releases = .data$total_releases*453.592, unit_of_measure = "g")
     } else if ("kg" == unique(epa_data$unit_of_measure)) {
       epa_data <- epa_data |>
-        mutate(total_release = .data$total_release*1000, unit_of_measure = "g")
+        mutate(total_releases = .data$total_releases*1000, unit_of_measure = "g")
     }
   }
   return(epa_data)
