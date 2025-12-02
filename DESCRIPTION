@@ -5,7 +5,7 @@ Authors@R: c(
     person("Faith", "Kwon", email = "fkwon@smith.edu", role = c("aut", "cre")),
     person("Zoe", "Khan", email = "zkhan@smith.edu", role = "aut")
   )
-Description: Tool for analyzing and plotting EPA Toxic Release Inventory data; exploratory data analysis, mapping, statistical tools.
+Description: Tool for analyzing and plotting EPA Toxic Release Inventory data; summary statistics, exploratory data analysis, and mapping.
 License: GPL-3
 Depends:
     R (>= 4.1.0)
