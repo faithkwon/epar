@@ -33,7 +33,8 @@ chemstats <- function(data, area = c("county", "city", "zip")) {
               percent_hazard = (sum(.data$clean_air_act_chemical == "NO") / n())*100) |>
     left_join(temp,
               by = grouping_var) |>
-    rename(top_industry = .data$industry_sector)
+    rename(top_industry = .data$industry_sector) |>
+    arrange(desc(.data$num_releases))
 
   return(result)
 }
