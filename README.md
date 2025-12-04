@@ -21,7 +21,16 @@ What is the top chemical release industry operating in Massachusetts,
 and what percentage of those releases are carcinogenic? Which county in
 Texas is responsible for the highest number of chemical releases? What
 percentage of releases contain metal? These are the kinds of questions
-you can answer with the epar package.
+you can answer with the epar package. If you want to write a letter to
+your local policymakers about the state of industrial chemical waste in
+today’s day and age, epar is for *you*.
+
+The epar package contains example data for Massachusetts and Texas, but
+users are welcome to find their own TRI data set and utilize some of
+epar’s behind-the-scenes functions for cleaning before moving on to the
+main summarizing and mapping functions. The world is your oyster! Feel
+free to add any questions, problems, or future directions of this work
+to our Issues tab above.
 
 ## Installation
 
@@ -33,11 +42,11 @@ You can install the development version of epar from
 pak::pak("faithkwon/epar")
 ```
 
-Important note: installed size is ~6.1Mb.
+Important note: installed size is large (\>6.1Mb).
 
 ## Examples
 
-This is a basic example of getting the summary statistics for two
+This is a basic example for getting the summary statistics of two
 different states for comparison:
 
 ``` r
