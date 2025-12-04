@@ -34,7 +34,7 @@ In addition to prepared data, the epar package has a whole host of functions to 
 `chemstats()` is a function for summarizing toxic release information by county, city, or zip code, depending on what the user specifies. We can use Massachusetts as an example:
 
 ```{r}
-chemstats(ma_2024, "county")
+chemstats(ma_2024, area = "county")
 ```
 
 
@@ -47,36 +47,48 @@ compare_states(ma_2024, tx_2024)
 `indust()` breaks down industry sectors by the proportion of a given binary variable. For instance, here is an example that returns the highest proportion of carcinogenic releases in Texas:
 
 ```{r}
-indust(tx_2024, "carcinogen")
+indust(tx_2024, grouping_var = "carcinogen")
 ```
 
 You may also choose to just obtain the top number of industries with `indust()`, as shown below with the top 3 industries in Texas for the highest proportion of carcinogenic releases:
 ```{r}
-indust(tx_2024, "carcinogen", 3)
+indust(tx_2024, grouping_var = "carcinogen", 3)
 ```
 
 `county_plot()` returns a bar plot that visualizes the the number of releases by industry sector in a given county. Here is an example of the number of releases by industry sector in Essex County, Massachusetts:
 
 ```{r}
-county_plot(ma_2024, "ESSEX")
+county_plot(ma_2024, county = "ESSEX")
 ```
 
 `mapchems()` returns a geographic scatter plot that shows the number of releases by facility, colored by one of these options: "classification" (PBT [persistent, bioaccumulative, and toxic] vs TRI [general chemical]), "carcinogen" (whether or not it's a carcinogen), "federal_facility" (whether the facility is federally owned or not), "pbt" (whether ot not the chemical is classified as a PBT or not), or "pfas" (per- and polyfluoroalkyl substance). Below we map Massachusetts releases, colored by whether or not the chemical is a carcinogen:
 
 ```{r}
-mapchems(ma_2024, "carcinogen")
+mapchems(ma_2024, grouping_var = "carcinogen")
 ```
 
-For another example, below we map Texas releases, colored by the chemical's classification:
+For another example, below we map Texas releases, colored by the chemicals' classifications:
 
 ```{r}
-mapchems(tx_2024, "classification")
+mapchems(tx_2024, grouping_var = "classification")
 ```
 
 `choro()` maps the number of chemical releases by county. You can choose to include or exclude county labels with a logical argument. For example, here is a map of the chemical releases in Massachusetts last year, including county labels:
 
 ```{r}
 choro(ma_2024, map_labels = TRUE)
+```
+
+However, you may choose to exclude county labels if you are working with a state with many counties that are close together, such as Texas. Here's what that'd look like:
+
+```{r}
+choro(tx_2024, map_labels = FALSE)
+```
+
+`facil()` maps all of the facilities in a given state and distinguishes them on a continuous scale, depending on the percentage of chemical releases from that facility that are classified as carcinogens. The use can choose to show this scale either through color (1), size (2), or both (3). This is what it'd look like to map Texas facilities and distinguish them by just color:
+
+```{r}
+facil(tx_2024, props = 1)
 ```
 
 There are also a number of functions for if a user has downloaded their own EPA TRI data set and wants to be able to produce the same visualizations as those above. The `clean_epa()` function goes through the data wrangling aspect of this. The `ma_2024` and `tx_2024` data sets included in the package have already been cleaned.
@@ -86,6 +98,7 @@ Additionally, the user may find helpful the `unit_change()` function, which help
 unit_change(tx_2024, "lbs") |>
   select(unit_of_measure, total_releases) |> head(1)
 ```
+
 Finally, we also have a more generic `percentage()` function, which allows the user to see the percentage of a categorical level in any given variable. For instance, below we test to see the percentage of chemical releases in Massachusetts are not metals:
 ```{r}
 percentage(ma_2024, "metal", "NO")
