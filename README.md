@@ -1,10 +1,10 @@
 
+<img src="man/figures/logo.png" align="right" height="139" alt="" />
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 # epar
 
 <!-- badges: start -->
-
 <!-- badges: end -->
 
 The goal of epar is to explore chemical release data that is made
