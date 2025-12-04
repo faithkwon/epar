@@ -16,11 +16,14 @@ knitr::opts_chunk$set(
 # epar
 
 <!-- badges: start -->
+
 <!-- badges: end -->
 
-The goal of epar is to explore chemical release data that is made available by the Environmental Protection Agency (EPA) in their Toxics Release Inventory (TRI). Data is reported every year by both industrial and federal facilities, which is accessible on the EPA government website. This data includes information on the properties of the released chemical, relevant facility and industry characteristics, and location of release. The epar package has tools to parse through this data and learn more about chemical releases in a number of different ways, including visualizations like maps and also summary statistics. 
+The goal of epar is to explore chemical release data that is made available by the Environmental Protection Agency (EPA) in their Toxics Release Inventory (TRI). Data is reported every year by both industrial and federal facilities, which is accessible on the EPA government website. This data includes information on the properties of the released chemical, relevant facility and industry characteristics, and location of release. The epar package has tools to parse through this data and learn more about chemical releases in a number of different ways, including visualizations like maps and also summary statistics.
 
-What is the top chemical release industry operating in Massachusetts, and what percentage of those releases are carcinogenic? Which county in Texas is responsible for the highest number of chemical releases? What percentage of releases contain metal? These are the kinds of questions you can answer with the epar package.
+What is the top chemical release industry operating in Massachusetts, and what percentage of those releases are carcinogenic? Which county in Texas is responsible for the highest number of chemical releases? What percentage of releases contain metal? These are the kinds of questions you can answer with the epar package. If you want to write a letter to your local policymakers about the state of industrial chemical waste in today's day and age, epar is for *you*.
+
+The epar package contains example data for Massachusetts and Texas, but users are welcome to find their own TRI data set and utilize some of epar's behind-the-scenes functions for cleaning before moving on to the main summarizing and mapping functions. The world is your oyster! Feel free to add any questions, problems, or future directions of this work to our Issues tab above.
 
 ## Installation
 
@@ -31,11 +34,11 @@ You can install the development version of epar from [GitHub](https://github.com
 pak::pak("faithkwon/epar")
 ```
 
-Important note: installed size is ~6.1Mb.
+Important note: installed size is large (\>6.1Mb).
 
 ## Examples
 
-This is a basic example of getting the summary statistics for two different states for comparison:
+This is a basic example for getting the summary statistics of two different states for comparison:
 
 ```{r example}
 library(epar)
@@ -43,9 +46,9 @@ compare_states(ma_2024, tx_2024)
 ```
 
 Another example is mapping the number of chemical releases by county:
+
 ```{r choropleth, echo = FALSE}
 choro(ma_2024, map_labels = TRUE)
 ```
 
-Delete this eventually: You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this. In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN.
-l
+Delete this eventually: You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this. In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN. l
