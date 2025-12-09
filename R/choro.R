@@ -17,6 +17,7 @@
 #' }
 
 choro <- function(epa_data, map_labels = FALSE) {
+
   epa_data <- epa_data |>
     rename("STUSPS" = .data$st) |>
     mutate(county = str_to_lower(.data$county))|>
