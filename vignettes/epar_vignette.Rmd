@@ -64,7 +64,7 @@ indust(tx_2024, grouping_var = "carcinogen", 3)
 
 `county_plot()` returns a bar plot that visualizes the the number of releases by industry sector in a given county. Here is an example of the number of releases by industry sector in Essex County, Massachusetts:
 
-```{r}
+```{r fig.height = 5, fig.width = 7}
 county_plot(ma_2024, "ESSEX")
 ```
 
