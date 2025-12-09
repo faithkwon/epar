@@ -19,6 +19,10 @@
 mapchems <- function(data, grouping_var = "classification") {
   grouping_var <- match.arg(grouping_var, choices = c("classification", "carcinogen", "federal_facility", "pbt", "pfas"))
 
+  if (length(unique(data$st)) > 1) {
+    stop("Multiple states in data set. Remove one and try again.")
+  }
+
   counties <- epar::us_counties |>
     filter(.data$STUSPS == data$st[1])
 
