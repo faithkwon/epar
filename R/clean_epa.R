@@ -8,7 +8,7 @@
 #' @export
 #' @examples
 #' \dontrun{
-#' clean_epa(epa_data)
+#' clean_epa(tx_2024)
 #'
 #' }
 

@@ -22,7 +22,7 @@ This is a function that can be used to change and synthesize the units of the to
 }
 \examples{
 \dontrun{
-unit_change(epa_data, "lbs")
+unit_change(tx_2024, "lbs")
 
 }
 }

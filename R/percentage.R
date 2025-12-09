@@ -13,5 +13,17 @@
 #' }
 
 percentage <- function(data, column, value) {
-  round((sum(data[[column]] == value) / nrow(data)) * 100, digits = 2)
+  if (!(column %in% names(data))) {
+    stop(paste0("ERROR: ", column, " is not found in this dataset. Please try again with valid column name."))
+  } else if (column == "frs_id" || column == "latitude" || column == "longitude") {
+    warning("Select a different column for more meaningful results.")
+  }
+
+  result <- round((sum(data[[column]] == value) / nrow(data)) * 100, digits = 2)
+
+  if(is.na(result)) {
+    return(0)
+  }
+
+  return(result)
 }

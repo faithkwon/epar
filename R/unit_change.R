@@ -9,7 +9,7 @@
 #' @export
 #' @examples
 #' \dontrun{
-#' unit_change(epa_data, "lbs")
+#' unit_change(tx_2024, "lbs")
 #'
 #' }
 unit_change <- function(epa_data, new_unit) {

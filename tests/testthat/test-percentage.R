@@ -10,4 +10,7 @@ test_that("percentage works", {
 
   # Test for when the column is numeric
   expect_equal(percentage(ma_2024, "zip", 2702), 0.98)
+
+  # Test that error works
+  expect_error(percentage(ma_2024, "x", 0))
 })

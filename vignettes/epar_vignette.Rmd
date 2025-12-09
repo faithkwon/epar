@@ -27,6 +27,13 @@ data(ma_2024)
 data(tx_2024)
 ```
 
+Here's a glimpse into what `ma_2024` looks like:
+
+```{r echo=FALSE}
+head(ma_2024, 5)
+```
+
+
 `ma_2024` and `tx_2024` contain the 2024 Toxic Release Inventory information from Massachusetts and Texas,  respectively. Each instance in the data is a toxic release report and breaks down information of each release. For example, the specific facility and its city/county, the industry sector, classifications of the chemical (i.e. whether it's a carcinogen, a metal, a "clean" chemical according to the Clean Air Act), and more (refer to the Data Documentation for a more in-depth breakdown of each variable). 
 
 In addition to prepared data, the epar package has a whole host of functions to help the user better understand the data. The following document will walk through each of these functions.
@@ -58,7 +65,7 @@ indust(tx_2024, grouping_var = "carcinogen", 3)
 `county_plot()` returns a bar plot that visualizes the the number of releases by industry sector in a given county. Here is an example of the number of releases by industry sector in Essex County, Massachusetts:
 
 ```{r}
-county_plot(ma_2024, county = "ESSEX")
+county_plot(ma_2024, "ESSEX")
 ```
 
 `mapchems()` returns a geographic scatter plot that shows the number of releases by facility, colored by one of these options: "classification" (PBT [persistent, bioaccumulative, and toxic] vs TRI [general chemical]), "carcinogen" (whether or not it's a carcinogen), "federal_facility" (whether the facility is federally owned or not), "pbt" (whether ot not the chemical is classified as a PBT or not), or "pfas" (per- and polyfluoroalkyl substance). Below we map Massachusetts releases, colored by whether or not the chemical is a carcinogen:

@@ -20,7 +20,7 @@ This function cleans up the inputted data by updating column names to more usabl
 }
 \examples{
 \dontrun{
-clean_epa(epa_data)
+clean_epa(tx_2024)
 
 }
 }

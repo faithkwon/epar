@@ -8,7 +8,7 @@
 #' @export
 #' @examples
 #' \dontrun{
-#' chemstats(epa, "county")
+#' chemstats(ma_2024, "county")
 #'
 #' }
 

@@ -22,7 +22,7 @@ The user can specify county, city, or zip code, and from there this function wil
 }
 \examples{
 \dontrun{
-chemstats(epa, "county")
+chemstats(ma_2024, "county")
 
 }
 }

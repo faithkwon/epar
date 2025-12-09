@@ -4,12 +4,12 @@
 \alias{county_plot}
 \title{County plotting function}
 \usage{
-county_plot(data, county)
+county_plot(data, my_county)
 }
 \arguments{
 \item{data}{ETA TRI dataset for a state and year}
 
-\item{county}{County of interest}
+\item{my_county}{County of interest}
 }
 \value{
 a ggplot object
@@ -22,7 +22,7 @@ This function takes in EPA data and a county of interest. It filters the data to
 }
 \examples{
 \dontrun{
-county_plot(epa_data, "ESSEX")
+county_plot(ma_2024, "ESSEX")
 
 }
 }

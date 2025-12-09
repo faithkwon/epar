@@ -15,6 +15,7 @@
 #' choro(ma_2024, TRUE)
 #' choro(tx_2024, FALSE)
 #' }
+
 choro <- function(epa_data, map_labels = FALSE) {
   epa_data <- epa_data |>
     rename("STUSPS" = .data$st) |>

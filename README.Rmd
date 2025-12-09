@@ -1,7 +1,7 @@
 ---
 output: github_document
 ---
-<img src="man/figures/logo.png" align="right" height="139" alt="" />
+
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 ```{r, include = FALSE}
@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 # epar
 
 <!-- badges: start -->
-
+<img src="man/figures/logo.png" align="right" height="139" style="padding: 10px;" alt="" />
 <!-- badges: end -->
 
 The goal of epar is to explore chemical release data that is made available by the Environmental Protection Agency (EPA) in their Toxics Release Inventory (TRI). Data is reported every year by both industrial and federal facilities, which is accessible on the EPA government website. This data includes information on the properties of the released chemical, relevant facility and industry characteristics, and location of release. The epar package has tools to parse through this data and learn more about chemical releases in a number of different ways, including visualizations like maps and also summary statistics.
