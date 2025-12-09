@@ -57,37 +57,37 @@ indust(tx_2024, grouping_var = "carcinogen", 3)
 
 `county_plot()` returns a bar plot that visualizes the the number of releases by industry sector in a given county. Here is an example of the number of releases by industry sector in Essex County, Massachusetts:
 
-```{r}
+```{r fig.height = 5, fig.width = 7}
 county_plot(ma_2024, county = "ESSEX")
 ```
 
 `mapchems()` returns a geographic scatter plot that shows the number of releases by facility, colored by one of these options: "classification" (PBT [persistent, bioaccumulative, and toxic] vs TRI [general chemical]), "carcinogen" (whether or not it's a carcinogen), "federal_facility" (whether the facility is federally owned or not), "pbt" (whether ot not the chemical is classified as a PBT or not), or "pfas" (per- and polyfluoroalkyl substance). Below we map Massachusetts releases, colored by whether or not the chemical is a carcinogen:
 
-```{r}
+```{r fig.height = 5, fig.width = 7}
 mapchems(ma_2024, grouping_var = "carcinogen")
 ```
 
 For another example, below we map Texas releases, colored by the chemicals' classifications:
 
-```{r}
+```{r fig.height = 6, fig.width = 6}
 mapchems(tx_2024, grouping_var = "classification")
 ```
 
 `choro()` maps the number of chemical releases by county. You can choose to include or exclude county labels with a logical argument. For example, here is a map of the chemical releases in Massachusetts last year, including county labels:
 
-```{r}
+```{r fig.height = 5, fig.width = 7, warning = FALSE}
 choro(ma_2024, map_labels = TRUE)
 ```
 
 However, you may choose to exclude county labels if you are working with a state with many counties that are close together, such as Texas. Here's what that'd look like:
 
-```{r}
+```{r fig.height = 6, fig.width = 6}
 choro(tx_2024, map_labels = FALSE)
 ```
 
 `facil()` maps all of the facilities in a given state and distinguishes them on a continuous scale, depending on the percentage of chemical releases from that facility that are classified as carcinogens. The use can choose to show this scale either through color (1), size (2), or both (3). This is what it'd look like to map Texas facilities and distinguish them by just color:
 
-```{r}
+```{r fig.height = 6, fig.width = 6}
 facil(tx_2024, props = 1)
 ```
 
